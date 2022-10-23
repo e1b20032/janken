@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 public class Janken {
   ArrayList<Double> numList = new ArrayList<>();
   double ave;
+  String cpuhand;
+  String kekka;
 
 
   // コンストラクタ
@@ -22,6 +24,9 @@ public class Janken {
       sum = sum + num;
     }
     ave = sum / numList.size();
+  }
+
+  public Janken(String yourhand, String cpuHand2) {
   }
 
   public ArrayList<Double> getNumList() {
@@ -38,5 +43,21 @@ public class Janken {
 
   public void setAve(double ave) {
     this.ave = ave;
+  }
+
+  public String getCpuHand() {
+    return cpuhand;
+  }
+
+  public void setCpuHand(String cpuhand) {
+    this.cpuhand = cpuhand;
+  }
+
+  public String getKekka() {
+    return kekka;
+  }
+
+  public void setKekka(String kekka) {
+    this.kekka =kekka;
   }
 }

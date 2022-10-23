@@ -26,12 +26,17 @@ public class JankenAuthConfiguration {
 
     UserDetails user1 = users
         .username("user1")
-        .password("$2y$10$P7eyvC1mskz2FwgniNstQO1vFS.s.HxybZOSzUa9SI.z.aT9zjrcG")
+        .password("$2y$10$i.QOwXHSxzpPyPcmwg68KuYVkoRqxfp7KVtWfPDcbUNwliWCxtyGG")
         .roles("USER")
         .build();
     UserDetails user2 = users
         .username("user2")
-        .password("$2y$10$y86JCumqrW5f3l.GcuT.J.JYOuIFlyuJBL/Wwcy/NZZwpASrPK0PG")
+        .password("$2y$10$ZbR2Zw4EJIuFZ5rgGZxHi.AocdPmLI3mXoGyOLGJVZNiNwzuyInHG")
+        .roles("USER")
+        .build();
+    UserDetails ほんだ = users
+        .username("ほんだ")
+        .password("$2y$10$DSxGbmQBYn.RxUyXi04NzuhBhvpL8qayVieHcHR8/bcrAP.OgoviO")
         .roles("USER")
         .build();
 
@@ -54,9 +59,12 @@ public class JankenAuthConfiguration {
     // mvcMatchers().authenticated()がmvcMatchersに指定されたアクセス先に認証処理が必要であることを示す
     // authenticated()の代わりにpermitAll()と書くと認証不要となる
     http.authorizeHttpRequests()
-        .mvcMatchers("/sample3/**").authenticated();
+        .mvcMatchers("/janken/**").authenticated();
 
     http.logout().logoutSuccessUrl("/"); // ログアウト時は "http://localhost:8000/" に戻る
+
+    http.csrf().disable();
+    http.headers().frameOptions().disable();
     return http.build();
   }
 
