@@ -7,15 +7,27 @@
 </head>
 
 <body>
+  <div><a href="/logout">ログアウト</a></div>
+
   <h1>Janken Game!</h1>
+
+  <h3>エントリー<div sec:authentication="name"></div>
+  </h3>
   <div th:if="${yourname}">
     Hi [[${yourname}]]
   </div>
-  <div>
-  <a href="/jankengame?hand=gu">ぐー</a>
-  <a href="/jankengame?hand=choki">ちょき</a>
-  <a href="/jankengame?hand=pa">ぱー</a>
-  </div>
-  <div th:if=${yourhand}>
-      あなたの手[[${yourhand}]]
-  </div>
+
+  <body>
+
+
+    <div>
+      <a href="/jankengame?hand=Gu">ぐー</a>
+      <a href="/jankengame?hand=Choki">ちょき</a>
+      <a href="/jankengame?hand=Pa">ぱー</a>
+    </div>
+    <div th:if=${yourhand}>
+      あなたの手 [[${yourhand}]]
+    <div th:if=${cpupand}>
+      相手の手 [[${cpuhand}]]
+
+    </div>

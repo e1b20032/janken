@@ -3,9 +3,12 @@ package oit.is.z1688.kaizi.janken.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+//import org.thymeleaf.engine.AttributeName;
+
+import oit.is.z1688.kaizi.janken.model.Janken;
 
 @Controller
 public class JankenController {
@@ -32,10 +35,15 @@ public class JankenController {
 
   @GetMapping("/jankengame")
   public String janken(@RequestParam String hand, ModelMap model) {
+
     String yourhand = hand;
     String cpuHand = "Gu";
-    model.addAttribute("yourhand", yourhand);
 
+    Janken janken = new Janken(yourhand, cpuHand);
+
+    model.addAttribute("yourhand", yourhand);
+    model.addAttribute("cpuhand", janken.getCpuHand());
+    model.addAttribute("kekka", janken.getKekka());
     return "janken.html";
 
   }
